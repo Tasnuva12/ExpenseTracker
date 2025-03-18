@@ -6,7 +6,7 @@ plugins {
 
 android {
     namespace = "com.example.expensetracker"
-    compileSdk = 34
+    compileSdk = 35
 
     defaultConfig {
         applicationId = "com.example.expensetracker"
@@ -56,4 +56,7 @@ dependencies {
     androidTestImplementation(libs.androidx.ui.test.junit4)
     debugImplementation(libs.androidx.ui.tooling)
     debugImplementation(libs.androidx.ui.test.manifest)
+    //constraintLayout
+    implementation("androidx.constraintlayout:constraintlayout-compose-android:1.1.1")
+
 }
