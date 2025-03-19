@@ -1,7 +1,5 @@
 package com.example.expensetracker.screens
 
-import android.graphics.Color
-import android.view.RoundedCorner
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
@@ -20,10 +18,10 @@ import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
-import androidx.compose.ui.Alignment.Companion.Center
 import androidx.compose.ui.Alignment.Companion.CenterEnd
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
@@ -31,8 +29,8 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.constraintlayout.compose.ConstraintLayout
+import androidx.constraintlayout.compose.Dimension
 import  com.example.expensetracker.R
-
 
 @Composable
 fun HomeScreen(){
@@ -76,8 +74,14 @@ fun HomeScreen(){
                     start.linkTo(parent.start)
                     end.linkTo(parent.end)
 
-                }
-            )
+                })
+            TransactionList(modifier=Modifier.fillMaxWidth().constrainAs(list){
+                top.linkTo(card.bottom)
+                start.linkTo(parent.start)
+                end.linkTo(parent.end)
+                bottom.linkTo(parent.bottom)
+                height= Dimension.fillToConstraints// fill available space
+            })
 
         }
     }
@@ -128,6 +132,8 @@ fun CardItem(modifier:Modifier){
             )
         }
 
+
+
     }
 
 }
@@ -146,6 +152,56 @@ fun CardRowItem(modifier:Modifier,title:String,amount:String,image:Int){
          }
         Spacer(modifier=Modifier.size(8.dp))
         Text(text=amount,fontSize = 20.sp, fontWeight = FontWeight.SemiBold,color= colorResource(R.color.white))
+    }
+}
+
+@Composable
+fun TransactionList(modifier:Modifier){
+    Column(modifier=modifier.padding(horizontal = 16.dp)){
+        Box(modifier=Modifier.fillMaxWidth().padding(vertical = 8.dp)){
+                  Text(text="Recent Transactions", fontSize = 20.sp, fontWeight = FontWeight.SemiBold)
+                  Text(text="See All",fontSize = 16.sp,color= colorResource(R.color.black),  modifier=Modifier.align(
+                      CenterEnd
+                  ))
+        }
+        Spacer(modifier=Modifier.size(8.dp))
+
+        TransactionItem(
+            title ="Upwork",
+            amount = "$ 200.00",
+            icon = R.drawable.upwork,
+            date = "Today",
+            color =Color.Green
+        )
+    }
+
+}
+@Composable
+fun TransactionItem(title: String, amount: String, icon: Int, date: String, color: Color){
+    Box(modifier=Modifier.fillMaxWidth()){
+              Row{
+                  Image(
+                   painter = painterResource(id=icon),
+                      modifier=Modifier.size(50.dp),
+                      contentDescription = null
+                  )
+                  Spacer(modifier=Modifier.size(8.dp))
+                  Column{
+                      Text(text=title, fontSize = 16.sp)
+                      Text(text=date, fontSize = 12.sp)
+                  }
+
+
+              }
+        Text(
+            text = amount,
+            fontSize = 20.sp,
+            color=color,
+            modifier = Modifier.align(CenterEnd)
+
+
+
+        )
     }
 }
 @Composable
