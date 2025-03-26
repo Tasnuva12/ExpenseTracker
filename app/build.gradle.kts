@@ -1,7 +1,12 @@
+import org.gradle.kotlin.dsl.annotationProcessor
+import org.gradle.kotlin.dsl.kapt
+
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
     alias(libs.plugins.kotlin.compose)
+    kotlin("kapt")
+
 }
 
 android {
@@ -58,5 +63,20 @@ dependencies {
     debugImplementation(libs.androidx.ui.test.manifest)
     //constraintLayout
     implementation("androidx.constraintlayout:constraintlayout-compose-android:1.1.1")
+
+    //room database
+    val room_version="2.6.1"
+    implementation("androidx.room:room-runtime:$room_version")
+    annotationProcessor("androidx.room:room-compiler:$room_version")
+
+    // Hilt
+    implementation(libs.hilt)
+    kapt(libs.hiltcompiler)
+    implementation(libs.androidx.hilt.navigation.compose)
+    //to use kotlin annotation processing tool (kapt)
+    kapt("androidx.room:room-compiler:$room_version")
+    implementation("androidx.room:room-ktx:$room_version")
+
+
 
 }
