@@ -3,6 +3,7 @@ package com.example.expensetracker.data
 import android.content.Context
 import androidx.room.Room
 import com.example.expensetracker.data.dao.ExpenseDAO
+import com.example.expensetracker.repository.ExpenseRepository
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -25,9 +26,10 @@ object DatabaseModule{
 
     }
     @Provides
-    fun provideExpenseDAO(db:ExpenseDatabase): ExpenseDAO{
+    @Singleton
+    fun provideExpenseRepository(db:ExpenseDatabase): ExpenseRepository{
 
-       return db.getExpensDAO()
+       return ExpenseRepository(db)
     }
 
 }

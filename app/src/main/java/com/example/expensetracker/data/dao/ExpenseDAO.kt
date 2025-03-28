@@ -22,4 +22,6 @@ interface ExpenseDAO{
     @Update
     suspend fun updateExpense(expenseEntity: ExpenseEntity)
 
+
+
 }

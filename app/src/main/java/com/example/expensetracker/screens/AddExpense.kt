@@ -112,7 +112,15 @@ fun DataForm(modifier: Modifier) {
             .verticalScroll(rememberScrollState())
 
     ) {
+        ExpenseTrackerText(text = "Type", fontSize = 12.sp,color=Color.Gray)
+        Spacer(modifier = Modifier.padding(4.dp))
+        OutlinedTextField(value = "", onValueChange = {}, modifier = Modifier.fillMaxWidth())
+        Spacer(modifier = Modifier.padding(8.dp))
         ExpenseTrackerText(text = "Name", fontSize = 12.sp,color=Color.Gray)
+        Spacer(modifier = Modifier.padding(4.dp))
+        OutlinedTextField(value = "", onValueChange = {}, modifier = Modifier.fillMaxWidth())
+        Spacer(modifier = Modifier.padding(8.dp))
+        ExpenseTrackerText(text = "Category", fontSize = 12.sp,color=Color.Gray)
         Spacer(modifier = Modifier.padding(4.dp))
         OutlinedTextField(value = "", onValueChange = {}, modifier = Modifier.fillMaxWidth())
         Spacer(modifier = Modifier.padding(8.dp))
@@ -124,6 +132,7 @@ fun DataForm(modifier: Modifier) {
         Spacer(modifier = Modifier.padding(4.dp))
         OutlinedTextField(value = "", onValueChange = {}, modifier = Modifier.fillMaxWidth())
         Spacer(modifier = Modifier.padding(10.dp))
+        
         //Button to submit the form
 
        Button(onClick = { },modifier=Modifier
