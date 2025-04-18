@@ -4,8 +4,9 @@ import org.gradle.kotlin.dsl.kapt
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
-    alias(libs.plugins.kotlin.compose)
+    alias(libs.plugins.hilt)
     kotlin("kapt")
+
 
 }
 
@@ -70,13 +71,20 @@ dependencies {
     annotationProcessor("androidx.room:room-compiler:$room_version")
 
 
+    implementation("androidx.hilt:hilt-navigation-compose:1.0.0")
+    implementation("com.google.dagger:hilt-android:2.50") // Use the latest version
+    kapt("com.google.dagger:hilt-compiler:2.50")
+
+
     // Hilt
     implementation(libs.hilt)
-    kapt(libs.hiltcompiler)
+    kapt(libs.hilt.compiler)
     implementation(libs.androidx.hilt.navigation.compose)
     //to use kotlin annotation processing tool (kapt)
     kapt("androidx.room:room-compiler:$room_version")
     implementation("androidx.room:room-ktx:$room_version")
+    implementation ("org.jetbrains.kotlin:kotlin-gradle-plugin:1.9.22" )// Use latest version
+
 
 
 
