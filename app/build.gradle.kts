@@ -83,7 +83,7 @@ dependencies {
     //to use kotlin annotation processing tool (kapt)
     kapt("androidx.room:room-compiler:$room_version")
     implementation("androidx.room:room-ktx:$room_version")
-    implementation ("org.jetbrains.kotlin:kotlin-gradle-plugin:1.9.22" )// Use latest version
+    implementation(libs.kotlin.gradle.plugin)// Use latest version
 
 
 
