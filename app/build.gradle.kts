@@ -8,6 +8,8 @@ plugins {
     kotlin("kapt")
 
 
+
+
 }
 
 android {
@@ -83,7 +85,7 @@ dependencies {
     //to use kotlin annotation processing tool (kapt)
     kapt("androidx.room:room-compiler:$room_version")
     implementation("androidx.room:room-ktx:$room_version")
-    implementation(libs.kotlin.gradle.plugin)// Use latest version
+   
 
 
 

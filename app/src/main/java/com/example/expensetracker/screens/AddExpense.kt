@@ -33,7 +33,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.constraintlayout.compose.ConstraintLayout
 import com.example.expensetracker.R
-import android.R
+
 import com.example.expensetracker.widgets.ExpenseTrackerText
 
 
